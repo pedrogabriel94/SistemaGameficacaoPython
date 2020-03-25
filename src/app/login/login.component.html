@@ -1,0 +1,25 @@
+<div class="container" style="border:2px solid #6ce079">
+    <div class="card card-container">
+        <img id="profile-img" class="profile-img-card" src="https://img2.gratispng.com/20181206/gec/kisspng-computer-icons-user-profile-portable-network-graph-go-to-image-page-5c08b9d570aa08.2752372515440757334615.jpg" />
+        <p id="profile-name" class="profile-name-card"></p>
+        <form class="form-signin">
+            <span id="reauth-email" class="reauth-email"></span>
+            <input  type="text" id="nome" class="form-control" placeholder="LOGIN" [(ngModel)]="pessoa.nome" [ngModelOptions]="{standalone: true}" required autofocus>
+            <div class="input-group mb-3">
+                <input  type="{{typeInput}}" id="senha" class="form-control" placeholder="SENHA" [(ngModel)]="pessoa.senha" [ngModelOptions]="{standalone: true}" required>
+                <div style="height: 38px;" class="input-group-append">
+                    <span class="input-group-text">
+                        <i class="fa fa-eye" aria-hidden="true" style="cursor:pointer" *ngIf="eyeOpen" (click)="verSenha()"></i>
+                        <i class="fa fa-eye-slash" aria-hidden="true" style="cursor:pointer" *ngIf="!eyeOpen" (click)="ocultarSenha()"></i>
+                    </span>
+                </div>
+            </div>
+            <select [(ngModel)]="pessoa.tipo" name="tipo" id="tipo" class="form-control" placeholder="TIPO" required [ngModelOptions]="{standalone: true}">
+                <option value="aluno" selected>Aluno</option>
+                <option value="instrutor">Instrutor</option>
+            </select><br>
+            <button (click)="logar()" type="submit" class="btn btn-lg btn-primary btn-block btn-signin">ENTRAR</button>
+            <p *ngIf="!dadosCorretos" align="center" style="color: red;">Usuário e/ou Senha incorreta</p>
+        </form>
+    </div>
+</div>

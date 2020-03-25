@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './login/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'appGameficacao';
+  viewMenu: string = localStorage.getItem("logado");
+
+
+  constructor(private authService: AuthService){}
+
+  ngOnInit(){
+    this.authService.viewMenu.subscribe(
+      x => this.viewMenu = localStorage.getItem("logado")
+    );
+
+  }
 }

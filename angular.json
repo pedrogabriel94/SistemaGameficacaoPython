@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "appGameficacao": {
@@ -117,8 +117,16 @@
               "devServerTarget": "appGameficacao:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
-  "defaultProject": "appGameficacao"
+    }
+  },
+  "defaultProject": "appGameficacao",
+  "cli": {
+    "analytics": "ba7dd412-6a8c-4d79-8f31-4435bd50e4ea"
+  }
 }

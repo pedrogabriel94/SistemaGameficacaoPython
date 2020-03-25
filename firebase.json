@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "appGameficacao",
+      "public": "dist/appGameficacao",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "sistemagameficacao": {
+      "hosting": {
+        "appGameficacao": [
+          "sistemagameficacao"
+        ]
+      }
+    }
+  }
+}
