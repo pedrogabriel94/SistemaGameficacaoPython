@@ -1,16 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../login/auth.service';
 import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardsService implements CanActivate {
+export class InstrutorGuardsService implements CanActivate {
 
+  viewMenu = new EventEmitter<boolean>();
   constructor(
-    private authService: AuthService,
     private router: Router
   ) { }
 
@@ -19,12 +18,16 @@ export class AuthGuardsService implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> | boolean{
     
-    if(this.authService.usuarioEstaLogado() == "true"){
+    if(sessionStorage.getItem('tipoLogado') == "instrutor"){
       return true;
     }
 
-    this.router.navigate([""]);
+    sessionStorage.setItem("logado", "false");
+    this.viewMenu.emit();
+    this.router.navigate(['']);
+    location.reload();
 
     return false;
   }
 }
+

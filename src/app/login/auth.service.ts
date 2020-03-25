@@ -1,5 +1,4 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { PessoaModel } from '../classes/pessoa.module';
 import { Router } from "@angular/router";
 
 @Injectable({
@@ -12,12 +11,13 @@ export class AuthService {
 
   constructor(private router: Router) { }
 
-  logar(pessoa: PessoaModel){
+  logar(pessoa){
     let page = pessoa.tipo == "aluno"? "20200316": "20200314";
-    if((pessoa.nome == "pedro" && pessoa.senha == "123") || this.autenticado){
+    sessionStorage.setItem("tipoLogado", pessoa.tipo);
+    if((pessoa.login == "pedro" && pessoa.senha == "123") || this.autenticado){
       this.router.navigate([page]);
       this.autenticado = true;
-      localStorage.setItem("logado", "true");
+      sessionStorage.setItem("logado", "true");
       this.viewMenu.emit();
       return true;
     }else{
@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   usuarioEstaLogado(){
-    return localStorage.getItem("logado");
+    return sessionStorage.getItem("logado");
   }
 
 }

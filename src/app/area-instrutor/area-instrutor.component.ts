@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PessoaModel } from '../classes/pessoa.module';
-import 'firebase/firestore';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { InstrutorModel } from '../classes/instrutor.module'
+import { InstrutorService } from './instrutor.service'
+
 
  
 @Component({
@@ -13,56 +13,59 @@ export class AreaInstrutorComponent implements OnInit {
 
  
 
-  pessoas = [];
-  pessoa: PessoaModel = new PessoaModel();
-  // customersRef: AngularFirestoreCollection<PessoaModel> = null;
-  private dbPath = '/alunos';
+  instrutores = [];
+  instrutor: InstrutorModel = new InstrutorModel();
+  titleModal: string = "Adicionar";
 
-  constructor(private db: AngularFirestore) {}
-
-  getAllService(){
-    console.log(this.db);
-    return this.db.collection('/alunos').snapshotChanges();
-  }
+  constructor(private instrutorService: InstrutorService) {}
 
   ngOnInit(): void {
     this.getAll();
   } 
 
   abrirModal(){
-    this.pessoa = {
+    this.instrutor = {
       nome: null,
       cpf: null,
-      presenca: null,
-      pontos: null,
       senha: null,
-      tipo: null
+      cargo: null
     };
+    this.titleModal = "Adicionar";
   }
 
   adicionar(){
-    this.db.collection('alunos').add(this.pessoa);
+    this.instrutorService.adicionar(this.instrutor);
   }
 
   getAll() { 
-    this.getAllService().subscribe(data => {
-      this.pessoas = data.map(e => {
+    this.instrutorService.getAll().subscribe(data => {
+      this.instrutores = data.map(e => {
         return {
           $key: e.payload.doc.id,
-          ...e.payload.doc.data() as PessoaModel
+          ...e.payload.doc.data() as InstrutorModel
         };
         
       })
-      console.log(this.pessoas);
     });
   }
 
   deletar(id){
-      this.db.doc('alunos/' + id).delete();
+    if(this.instrutores.length > 1){
+      this.instrutorService.deletar(id);
+    }else{
+      alert("É necessario que tenha pelo menos usuário para que seja possível fazer login.")
+    }
+    
   } 
 
+  openModalEditar(i){
+    this.titleModal = "Editar";
+    this.instrutor =  Object.assign({}, i); //Faz uma copia do objeto
+  }
+
   editar(){
-    return 1;
+    this.instrutorService.editar(this.instrutor);
+    this.getAll();
   }
 
 }

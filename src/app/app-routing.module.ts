@@ -4,13 +4,12 @@ import { LoginComponent } from './login/login.component';
 import { AreaInstrutorComponent } from './area-instrutor/area-instrutor.component';
 import { AreaAlunoComponent } from './area-aluno/area-aluno.component';
 import { AuthGuardsService } from './guardas/auth.guards';
-import { ChildGuards } from './guardas/child.guards';
-
+import { InstrutorGuardsService } from './guardas/instrutor.guards';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
-  { path: '20200314', component: AreaInstrutorComponent, canActivate: [AuthGuardsService], canActivateChild: [ChildGuards]},
-  { path: '20200316', component: AreaAlunoComponent, canActivate: [AuthGuardsService], canActivateChild: [ChildGuards]},
+  { path: '20200314', component: AreaInstrutorComponent, canActivate: [AuthGuardsService, InstrutorGuardsService]},
+  { path: '20200316', component: AreaAlunoComponent, canActivate: [AuthGuardsService]},
 ];
 
 @NgModule({

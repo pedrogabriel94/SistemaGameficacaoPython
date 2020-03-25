@@ -8,14 +8,15 @@ import { AuthService } from './login/auth.service';
 })
 export class AppComponent {
   title = 'appGameficacao';
-  viewMenu: string = localStorage.getItem("logado");
+  viewMenu: string = sessionStorage.getItem("logado");
 
 
   constructor(private authService: AuthService){}
 
   ngOnInit(){
     this.authService.viewMenu.subscribe(
-      x => this.viewMenu = localStorage.getItem("logado")
+      x => this.viewMenu = sessionStorage.getItem("logado"),
+      console.log(this.viewMenu)
     );
 
   }

@@ -11,23 +11,23 @@
                     <thead>
                         <tr>
                             <th>NOME</th>
-                            <th>CPF/LOGIN</th>
-                            <th>PONTOS</th>
-                            <th>PRESENÇA</th>
+                            <th>CPF</th>
+                            <th>CARGO</th>
                             <th>SENHA</th>
                             <th>AÇÕES</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of pessoas">
-                            <td>{{item.nome}}</td>
-                            <td>{{item.cpf}}</td>
-                            <td>{{item.pontos}}</td>
-                            <td>{{item.presenca}}</td>
-                            <td>{{item.senha}}</td>
+                        <tr *ngFor="let i of instrutores">
+                            <td>{{i.nome}}</td>
+                            <td>{{i.cpf}}</td>
+                            <td>{{i.cargo}}</td>
+                            <td>{{i.senha}}</td>
                             <td>
-                                <button class="font-branca btn btn-warning" >Editar</button>&nbsp;
-                                <button class="btn btn-danger" (click)="deletar(item.$key)">Deletar</button>
+                                <button class="font-branca btn btn-warning" data-toggle="modal" data-target="#add" (click)="openModalEditar(i)">
+                                    Editar
+                                </button>&nbsp;
+                                <button class="btn btn-danger" (click)="deletar(i.$key)">Deletar</button>
                             </td>
                         </tr>
                     </tbody>
@@ -37,13 +37,13 @@
     </div>
 </div>
 
-<div class="modal" id="add">
+<div class="modal" id="add" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Adicionar</h4>
+                <h4 class="modal-title">{{titleModal}}</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -54,7 +54,7 @@
                         <label for="nome">Nome:</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" placeholder="nome" name="nome" id="nome" class="form-control" [(ngModel)]="pessoa.nome"
+                        <input type="text" placeholder="Nome" name="nome" id="nome" class="form-control" [(ngModel)]="instrutor.nome"
                         [ngModelOptions]="{standalone: true}"><br>
                     </div>
                 </div>
@@ -63,11 +63,23 @@
                         <label for="cpf">CPF:</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" placeholder="cpf" name="cpf" id="cpf" class="form-control" [(ngModel)]="pessoa.cpf"
+                        <input type="text" placeholder="Cpf" name="cpf" id="cpf" class="form-control" [(ngModel)]="instrutor.cpf"
                         [ngModelOptions]="{standalone: true}"><br>
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-2">
+                        <label for="cargo">CARGO:</label>
+                    </div>
+                    <div class="col-md-10">
+                        <select name="cargo" id="cargo" class="form-control" [(ngModel)]="instrutor.cargo"
+                        [ngModelOptions]="{standalone: true}">
+                            <option value="coordenador" selected>Coordenador</option>
+                            <option value="instrutor">Instrutor</option>
+                        </select><br>
+                    </div>
+                </div>
+                <!-- <div class="row">
                     <div class="col-md-2">
                         <label for="pontos">Pontos:</label>
                     </div>
@@ -82,13 +94,13 @@
                         <input type="number" min="0" name="presenca" id="presenca" class="form-control" [(ngModel)]="pessoa.presenca"
                         [ngModelOptions]="{standalone: true}"><br>
                     </div>
-                </div>
+                </div> -->
                 <div class="row">
                     <div class="col-md-2">
                         <label for="senha">Senha:</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="password" placeholder="senha" name="senha" id="senha" class="form-control" [(ngModel)]="pessoa.senha"
+                        <input type="password" placeholder="senha" name="senha" id="senha" class="form-control" [(ngModel)]="instrutor.senha"
                         [ngModelOptions]="{standalone: true}">
                     </div>
                 </div>
@@ -96,7 +108,8 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" (click)="adicionar()" data-dismiss="modal">Adicionar</button>
+                <button *ngIf="titleModal == 'Adicionar'" type="button" class="btn btn-success" (click)="adicionar()" data-dismiss="modal">Adicionar</button>
+                <button *ngIf="titleModal != 'Adicionar'" type="button" class="btn btn-success" (click)="editar()" data-dismiss="modal">Editar</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
 

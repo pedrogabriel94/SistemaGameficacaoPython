@@ -13,7 +13,7 @@ export class MenuComponent implements OnInit {
   }
 
   sair(){
-    localStorage.setItem("logado", "false");
+    sessionStorage.setItem("logado", "false");
   }
 
 }

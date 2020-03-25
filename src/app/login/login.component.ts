@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PessoaModel } from '../classes/pessoa.module';
+import { Component, OnInit, EventEmitter } from '@angular/core';
+import { PessoaModel } from '../classes/aluno.module';
 import { AuthService } from './auth.service';
 
 
@@ -10,10 +10,11 @@ import { AuthService } from './auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  pessoa: PessoaModel = new PessoaModel();
+  pessoa =  {tipo: null, login: null, senha: null};
   dadosCorretos: boolean = true;
   typeInput: string = "password";
   eyeOpen: boolean = true;
+  viewMenu = new EventEmitter<boolean>();
 
 
   constructor(private authService: AuthService) { 
@@ -21,6 +22,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    sessionStorage.setItem("logado", "false");
+    this.viewMenu.emit();
   }
 
   logar(){

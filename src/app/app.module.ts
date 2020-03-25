@@ -11,7 +11,7 @@ import { AreaInstrutorComponent } from './area-instrutor/area-instrutor.componen
 import { MenuComponent } from './menu/menu.component';
 import { AuthService } from './login/auth.service';
 import { AuthGuardsService } from './guardas/auth.guards';
-import { ChildGuards } from './guardas/child.guards';
+import { InstrutorGuardsService } from './guardas/instrutor.guards';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -38,7 +38,7 @@ import { environment } from '../environments/environment';
   providers: [
     AuthService,
     AuthGuardsService,
-    ChildGuards
+    InstrutorGuardsService
   ],
   bootstrap: [AppComponent]
 })
