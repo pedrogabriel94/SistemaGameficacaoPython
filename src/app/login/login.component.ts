@@ -1,6 +1,9 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { PessoaModel } from '../classes/aluno.module';
 import { AuthService } from './auth.service';
+import { InstrutorModel } from '../classes/instrutor.module'
+import { AlunoModel } from '../classes/aluno.module'
+import { InstrutorService } from '../area-instrutor/instrutor.service'
+import { AlunoService } from '../area-aluno/aluno.service'
 
 
 @Component({
@@ -15,19 +18,21 @@ export class LoginComponent implements OnInit {
   typeInput: string = "password";
   eyeOpen: boolean = true;
   viewMenu = new EventEmitter<boolean>();
+  instrutores = [];
+  alunos = [];
 
-
-  constructor(private authService: AuthService) { 
+  constructor(private authService: AuthService, private instrutorService: InstrutorService, private alunoService: AlunoService) { 
       this.pessoa.tipo = "aluno";
   }
 
   ngOnInit(): void {
+    this.getUsuarios();
     sessionStorage.setItem("logado", "false");
     this.viewMenu.emit();
   }
 
   logar(){
-    this.dadosCorretos = this.authService.logar(this.pessoa);
+    this.dadosCorretos = this.authService.logar(this.pessoa, this.instrutores, this.alunos);
   }
 
   verSenha(){
@@ -38,6 +43,27 @@ export class LoginComponent implements OnInit {
   ocultarSenha(){
     this.typeInput = "password";
     this.eyeOpen = true;
+  }
+
+  getUsuarios(){
+    this.instrutorService.getAll().subscribe(data => {
+      this.instrutores = data.map(e => {
+        return {
+          $key: e.payload.doc.id,
+          ...e.payload.doc.data() as InstrutorModel
+        };
+        
+      })
+    });
+
+    this.alunoService.getAll().subscribe(data => {
+      this.alunos = data.map(e => {
+        return {
+          $key: e.payload.doc.id,
+          ...e.payload.doc.data() as AlunoModel
+        };
+      })
+    });
   }
 
 }

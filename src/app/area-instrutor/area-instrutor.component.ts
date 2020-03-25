@@ -28,7 +28,9 @@ export class AreaInstrutorComponent implements OnInit {
       nome: null,
       cpf: null,
       senha: null,
-      cargo: null
+      cargo: null,
+      telefone: null,
+      login: null,
     };
     this.titleModal = "Adicionar";
   }

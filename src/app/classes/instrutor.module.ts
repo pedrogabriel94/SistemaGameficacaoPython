@@ -3,4 +3,6 @@ export class InstrutorModel{
     cpf: string;
     cargo: string;
     senha: string;
+    telefone: string;
+    login: string;
 }

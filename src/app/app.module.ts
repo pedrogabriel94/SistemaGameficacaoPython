@@ -17,6 +17,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { environment } from '../environments/environment';
+import { AtividadesComponent } from './atividades/atividades.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { environment } from '../environments/environment';
     LoginComponent,
     AreaAlunoComponent,
     AreaInstrutorComponent,
-    MenuComponent
+    MenuComponent,
+    AtividadesComponent
   ],
   imports: [
     BrowserModule,
