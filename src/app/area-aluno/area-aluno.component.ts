@@ -11,6 +11,7 @@ export class AreaAlunoComponent implements OnInit {
 
  
 
+  idDeletar: string;
   alunos = [];
   aluno: AlunoModel = new AlunoModel();
   titleModal: string = "Adicionar";
@@ -48,6 +49,10 @@ export class AreaAlunoComponent implements OnInit {
         
       })
     });
+  }
+
+  openModalDeletar(id){
+    this.idDeletar = id
   }
 
   deletar(id){

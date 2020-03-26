@@ -14,7 +14,7 @@ export class AuthService {
   constructor(private router: Router) { }
 
   logar(pessoa, instrutores, alunos){
-    let page = pessoa.tipo == "aluno"? "20200316": "20200314";
+    let page = pessoa.tipo == "aluno"? "20200325": "20200314";
     let array = pessoa.tipo == "aluno"? alunos: instrutores;
     sessionStorage.setItem("tipoLogado", pessoa.tipo);
     if(this.validaUsuario(array, pessoa) || this.autenticado){

@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AreaAlunoComponent } from './area-aluno/area-aluno.component';
 import { AreaInstrutorComponent } from './area-instrutor/area-instrutor.component';
+import { AtividadesComponent } from './atividades/atividades.component';
 import { MenuComponent } from './menu/menu.component';
 import { AuthService } from './login/auth.service';
 import { AuthGuardsService } from './guardas/auth.guards';
@@ -17,8 +18,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { environment } from '../environments/environment';
-import { AtividadesComponent } from './atividades/atividades.component';
-
 
 @NgModule({
   declarations: [

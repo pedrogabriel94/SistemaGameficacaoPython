@@ -12,7 +12,7 @@ import { InstrutorService } from './instrutor.service'
 export class AreaInstrutorComponent implements OnInit {
 
  
-
+  idDeletar: string;
   instrutores = [];
   instrutor: InstrutorModel = new InstrutorModel();
   titleModal: string = "Adicionar";
@@ -49,6 +49,10 @@ export class AreaInstrutorComponent implements OnInit {
         
       })
     });
+  }
+
+  openModalDeletar(id){
+    this.idDeletar = id
   }
 
   deletar(id){
