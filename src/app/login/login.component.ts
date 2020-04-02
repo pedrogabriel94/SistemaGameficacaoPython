@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
     this.eyeOpen = true;
   }
 
-  getUsuarios(){
+  getUsuarios(){//testeCommit
     this.instrutorService.getAll().subscribe(data => {
       this.instrutores = data.map(e => {
         return {
