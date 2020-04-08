@@ -35,3 +35,13 @@
 .font-branca{
     color: #fff !important;
 }
+
+.header-card-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#btn-delete-atividade{
+    margin-left: 10px;
+}
