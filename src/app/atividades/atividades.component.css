@@ -45,3 +45,25 @@
 #btn-delete-atividade{
     margin-left: 10px;
 }
+
+.modal-correct{
+    margin-top: 1px;
+
+}
+
+.modal-footer-buttons{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.painel{
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.painel div{
+    margin: 20px;
+}

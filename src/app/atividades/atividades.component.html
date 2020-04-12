@@ -5,26 +5,19 @@
                 <h3>Atividades</h3>
                 <button class="btn btn-success" data-toggle="modal" *ngIf="isAdmin" data-target="#add"
                     (click)="abrirModal()">Adicionar atividades</button>
-
             </div>
-            <!--<div class="col-md-3"></div> -->
-            <div class="card" *ngFor="let i of atividades">
-                <div class="card-body">
-                    <h4 class="card-title">{{i.nome}}</h4>
-                    <p class="card-text"><strong>Descrição:</strong><br>{{i.descricao}}</p>
-                    <p class="card-text"><strong>Pontuação:</strong><br>{{i.pontuacao}}pt</p>
-                    <p class="card-text"><strong>Data de Entrega</strong><br>{{i.data_entrega}}</p>
-                    <p class="card-text" *ngIf="isAdmin"><strong>Data de Criação</strong><br>{{i.data_criacao}}</p>
-                    <a href="#" class="btn btn-warning" *ngIf="isAdmin" data-target="#add" data-toggle="modal"
-                        (click)="openModalEditar(i)">Editar</a>
-                    <a 
-                    href="20200325" 
-                    class="btn btn-danger" 
-                    data-toggle="modal"
-                    *ngIf="isAdmin" 
-                    data-target="#del"
-                    id="btn-delete-atividade" 
-                    (click)="openModalDeletar(i.$key)">Deletar</a>
+            <div class="painel">
+                <div class="card" *ngFor="let i of atividades">
+                    <div class="card-body">
+                        <h4 class="card-title">{{i.nome}}</h4>
+                        <p class="card-text"><strong>Descrição:</strong><br>{{i.descricao}}</p>
+                        <p class="card-text"><strong>Pontuação:</strong><br>{{i.pontuacao}}pt</p>
+                        <p class="card-text"><strong>Data de Entrega</strong><br>{{i.data_entrega}}</p>
+                        <a href="#" class="btn btn-warning" *ngIf="isAdmin" data-target="#add" data-toggle="modal"
+                            (click)="openModalEditar(i)">Editar</a>
+                        <a href="20200325" class="btn btn-danger" data-toggle="modal" *ngIf="isAdmin" data-target="#del"
+                            id="btn-delete-atividade" (click)="openModalDeletar(i.$key)">Deletar</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -42,18 +35,18 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <div class="row">
+                <div class="row" class=" modal-correct">
                     <div class="col-md-2">
-                        <label for="nome">Nome:</label>
+                        <label for="nome"><strong>Nome:</strong></label>
                     </div>
                     <div class="col-md-10">
                         <input type="text" placeholder="Nome" name="nome" id="nome" class="form-control"
                             [(ngModel)]="atividade.nome" [ngModelOptions]="{standalone: true}"><br>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" class=" modal-correct">
                     <div class="col-md-2">
-                        <label for="descricao">Descrição:</label>
+                        <label for="descricao"><strong>Descrição:</strong></label>
                     </div>
                     <div class="col-md-10">
                         <textarea type="text" placeholder="Descrição da atividade" name="descricao" id="descricao"
@@ -61,9 +54,9 @@
                             [ngModelOptions]="{standalone: true}"></textarea>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" class=" modal-correct">
                     <div class="col-md-2">
-                        <label for="pontuacao">Pontuação</label>
+                        <label for="pontuacao"><strong>Pontuação:</strong></label>
                     </div>
                     <div class="col-md-10">
                         <input type="number" placeholder="Pontuação da atividade" name="pontuacao" id="pontuacao"
@@ -71,9 +64,9 @@
                             [ngModelOptions]="{standalone: true}">
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" class=" modal-correct">
                     <div class="col-md-2">
-                        <label for="entrega">Entrega</label>
+                        <label for="entrega"><strong>Entrega:</strong></label>
                     </div>
                     <div class="col-md-10">
                         <input type="date" placeholder="Data de entrega da atividade" name="entrega" id="entrega"
@@ -81,27 +74,18 @@
                             [ngModelOptions]="{standalone: true}">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2">
-                        <label for="entrega">Criação</label>
-                    </div>
-                    <div class="col-md-10">
-                        <input type="date" placeholder="Data de criação da atividade" name="pontuacao" id="criacao"
-                            class="form-control" [(ngModel)]="atividade.data_criacao"
-                            [ngModelOptions]="{standalone: true}">
-                    </div>
-                </div>
 
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button *ngIf="titleModal == 'Adicionar'" type="button" class="btn btn-success" (click)="adicionar()"
-                    data-dismiss="modal">Adicionar</button>
-                <button *ngIf="titleModal != 'Adicionar'" type="button" class="btn btn-success" (click)="editar()"
-                    data-dismiss="modal">Editar</button>
+                <div class="modal-footer-buttons">
+                    <button *ngIf="titleModal == 'Adicionar'" type="button" class="btn btn-success"
+                        (click)="adicionar()" data-dismiss="modal">Adicionar</button>
+                    <button *ngIf="titleModal != 'Adicionar'" type="button" class="btn btn-success" (click)="editar()"
+                        data-dismiss="modal">Editar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
 
-
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>
@@ -123,7 +107,8 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button  type="button" class="btn btn-success" (click)="deletar(idDeletar)" data-dismiss="modal">Sim</button>
+                <button type="button" class="btn btn-success" (click)="deletar(idDeletar)"
+                    data-dismiss="modal">Sim</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
