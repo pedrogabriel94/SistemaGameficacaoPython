@@ -36,3 +36,20 @@
     color: #fff !important;
 }
 
+.col-md-12{
+    margin-top: 10px;
+}
+
+.modal-footer-buttons{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.header-card-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}

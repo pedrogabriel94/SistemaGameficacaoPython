@@ -17,6 +17,7 @@
                             (click)="openModalEditar(i)">Editar</a>
                         <a href="20200325" class="btn btn-danger" data-toggle="modal" *ngIf="isAdmin" data-target="#del"
                             id="btn-delete-atividade" (click)="openModalDeletar(i.$key)">Deletar</a>
+                        
                     </div>
                 </div>
             </div>
@@ -79,11 +80,12 @@
             <!-- Modal footer -->
             <div class="modal-footer">
                 <div class="modal-footer-buttons">
-                    <button *ngIf="titleModal == 'Adicionar'" type="button" class="btn btn-success"
-                        (click)="adicionar()" data-dismiss="modal">Adicionar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     <button *ngIf="titleModal != 'Adicionar'" type="button" class="btn btn-success" (click)="editar()"
                         data-dismiss="modal">Editar</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button *ngIf="titleModal == 'Adicionar'" type="button" class="btn btn-success"
+                        (click)="adicionar()" data-dismiss="modal">Adicionar</button>
+
                 </div>
 
             </div>

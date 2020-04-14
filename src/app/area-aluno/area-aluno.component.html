@@ -1,10 +1,12 @@
 <div class="container" style="border:2px solid #6ce079">
     <div class="card card-container container-dashboard">
         <div class="row">
-            <div class="col-md-4 pull-left">
+            <div class="header-card-container">
                 <h3>Alunos</h3>
-                <button class="btn add" data-toggle="modal" data-target="#add" (click)="abrirModal()">Adicionar</button>
+                <button class="btn btn-success" data-toggle="modal" data-target="#add"
+                    (click)="abrirModal()">Adicionar</button>
             </div>
+
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -31,10 +33,12 @@
                             <td>{{i.login}}</td>
                             <td>{{i.senha}}</td>
                             <td>
-                                <button class="font-branca btn btn-warning" data-toggle="modal" data-target="#add" (click)="openModalEditar(i)">
+                                <button class="font-branca btn btn-warning" data-toggle="modal" data-target="#add"
+                                    (click)="openModalEditar(i)">
                                     Editar
                                 </button>&nbsp;
-                                <button class="btn btn-danger" data-toggle="modal" data-target="#del" (click)="openModalDeletar(i.$key)">Deletar</button>
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#del"
+                                    (click)="openModalDeletar(i.$key)">Deletar</button>
                             </td>
                         </tr>
                     </tbody>
@@ -61,8 +65,8 @@
                         <label for="nome">Nome:</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" placeholder="Nome" name="nome" id="nome" class="form-control" [(ngModel)]="aluno.nome"
-                        [ngModelOptions]="{standalone: true}"><br>
+                        <input type="text" placeholder="Nome" name="nome" id="nome" class="form-control"
+                            [(ngModel)]="aluno.nome" [ngModelOptions]="{standalone: true}"><br>
                     </div>
                 </div>
                 <div class="row">
@@ -70,8 +74,8 @@
                         <label for="cpf">CPF:</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" placeholder="Cpf" name="cpf" id="cpf" class="form-control" [(ngModel)]="aluno.cpf"
-                        [ngModelOptions]="{standalone: true}"><br>
+                        <input type="text" placeholder="Cpf" name="cpf" id="cpf" class="form-control"
+                            [(ngModel)]="aluno.cpf" [ngModelOptions]="{standalone: true}"><br>
                     </div>
                 </div>
                 <div class="row">
@@ -79,15 +83,15 @@
                         <label for="pontos">Pontos:</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="number" min="0" name="pontos" id="pontos" class="form-control" [(ngModel)]="aluno.pontos"
-                        [ngModelOptions]="{standalone: true}">
+                        <input type="number" min="0" name="pontos" id="pontos" class="form-control"
+                            [(ngModel)]="aluno.pontos" [ngModelOptions]="{standalone: true}">
                     </div>
                     <div class="col-md-2">
                         <label for="presenca">Presença:</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="number" min="0" name="presenca" id="presenca" class="form-control" [(ngModel)]="aluno.presenca"
-                        [ngModelOptions]="{standalone: true}"><br>
+                        <input type="number" min="0" name="presenca" id="presenca" class="form-control"
+                            [(ngModel)]="aluno.presenca" [ngModelOptions]="{standalone: true}"><br>
                     </div>
                 </div>
                 <div class="row">
@@ -95,8 +99,8 @@
                         <label for="tel">Telefone:</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" placeholder="telefone" name="tel" id="tel" class="form-control" [(ngModel)]="aluno.telefone"
-                        [ngModelOptions]="{standalone: true}"><br>
+                        <input type="text" placeholder="telefone" name="tel" id="tel" class="form-control"
+                            [(ngModel)]="aluno.telefone" [ngModelOptions]="{standalone: true}"><br>
                     </div>
                 </div>
                 <div class="row">
@@ -104,8 +108,8 @@
                         <label for="login">Login:</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" placeholder="login" name="login" id="login" class="form-control" [(ngModel)]="aluno.login"
-                        [ngModelOptions]="{standalone: true}"><br>
+                        <input type="text" placeholder="login" name="login" id="login" class="form-control"
+                            [(ngModel)]="aluno.login" [ngModelOptions]="{standalone: true}"><br>
                     </div>
                 </div>
                 <div class="row">
@@ -113,17 +117,23 @@
                         <label for="senha">Senha:</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" placeholder="senha" name="senha" id="senha" class="form-control" [(ngModel)]="aluno.senha"
-                        [ngModelOptions]="{standalone: true}">
+                        <input type="text" placeholder="senha" name="senha" id="senha" class="form-control"
+                            [(ngModel)]="aluno.senha" [ngModelOptions]="{standalone: true}">
                     </div>
                 </div>
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button *ngIf="titleModal == 'Adicionar'" type="button" class="btn btn-success" (click)="adicionar()" data-dismiss="modal">Adicionar</button>
-                <button *ngIf="titleModal != 'Adicionar'" type="button" class="btn btn-success" (click)="editar()" data-dismiss="modal">Editar</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <div class="modal-footer-buttons">
+                    <button *ngIf="titleModal != 'Adicionar'" type="button" class="btn btn-success" (click)="editar()"
+                        data-dismiss="modal">Editar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button *ngIf="titleModal == 'Adicionar'" type="button" class="btn btn-success"
+                        (click)="adicionar()" data-dismiss="modal">Adicionar</button>
+                </div>
+
+
             </div>
 
         </div>
@@ -146,7 +156,8 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button  type="button" class="btn btn-success" (click)="deletar(idDeletar)" data-dismiss="modal">Sim</button>
+                <button type="button" class="btn btn-success" (click)="deletar(idDeletar)"
+                    data-dismiss="modal">Sim</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
         </div>

@@ -43,7 +43,7 @@
 }
 
 #btn-delete-atividade{
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 .modal-correct{
@@ -61,9 +61,19 @@
 .painel{
     display: grid;
     grid-template-rows: auto;
+    grid-auto-rows: 415px;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
 .painel div{
     margin: 20px;
+}
+
+.card{
+    padding: 0px;
+}
+
+.card-body{
+    margin:0px;
+    overflow: auto;
 }
