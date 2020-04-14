@@ -24,7 +24,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let i of alunos">
+                        <tr *ngFor="let i of alunos | paginate: { itemsPerPage: 5, currentPage: paginaAtual }; ">
                             <td>{{i.nome}}</td>
                             <td>{{i.cpf}}</td>
                             <td>{{i.pontos}}</td>
@@ -42,7 +42,16 @@
                             </td>
                         </tr>
                     </tbody>
+                    
                 </table>
+    
+            </div>
+            <div class="pagination">
+                <pagination-controls 
+                (pageChange)="paginaAtual = $event"
+                previousLabel="Anterior" 
+                nextLabel="Próximo"
+                ></pagination-controls>
             </div>
         </div>
     </div>

@@ -47,6 +47,19 @@
 
 }
 
+.pagination{
+    position: absolute;
+    top: 470px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-container.card{
+    height: 510px;
+}
+
+
 .header-card-container{
     width: 100%;
     display: flex;
