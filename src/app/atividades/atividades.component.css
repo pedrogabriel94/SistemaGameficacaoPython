@@ -75,5 +75,46 @@
 
 .card-body{
     margin:0px;
-    overflow: auto;
+    padding: 0px;
+    max-height: 400px;
+    overflow: auto!important;
+}
+
+@media (max-width: 995px) and (min-width: 770px){
+    .painel{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        grid-auto-rows: 415px;
+    }
+}
+
+
+@media (max-width: 769px){
+    .painel{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-auto-rows: 415px;
+    }
+    .card.card-container.container-dashboard{
+        padding: 0px;
+    }
+    
+    .header-card-container{
+        width: 200px!important;
+        margin-left: 25px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .btn.btn-warning{
+        margin-left:14px;
+    }
+}
+
+@media (max-width: 316px){
+    .btn.btn-warning{
+        margin-bottom: 5px;
+    }
 }

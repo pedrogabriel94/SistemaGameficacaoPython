@@ -53,3 +53,12 @@
     justify-content: space-between;
     margin-top: 5px;
 }
+
+@media (max-width: 769px){
+    .header-card-container{
+        width: 200px!important;
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+}

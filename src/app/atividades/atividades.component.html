@@ -2,11 +2,12 @@
     <div class="card card-container container-dashboard">
         <div class="row">
             <div class="header-card-container">
-                <h3>Atividades</h3>
+                <h3 class="header-title">Atividades</h3>
                 <button class="btn btn-success" data-toggle="modal" *ngIf="isAdmin" data-target="#add"
                     (click)="abrirModal()">Adicionar atividades</button>
             </div>
             <div class="painel">
+
                 <div class="card" *ngFor="let i of atividades">
                     <div class="card-body">
                         <h4 class="card-title">{{i.nome}}</h4>
