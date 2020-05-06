@@ -51,9 +51,16 @@
     position: absolute;
     top: 380px;
     width: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
+    right: 10px;
 }
+
+.pagination .ngx-pagination{
+    margin-right: 100pt!important;
+}
+
 
 .card-container.card{
     height: 520px;
