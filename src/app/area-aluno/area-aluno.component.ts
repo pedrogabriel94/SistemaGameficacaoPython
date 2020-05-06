@@ -29,8 +29,6 @@ export class AreaAlunoComponent implements OnInit {
       nome: null,
       cpf: null,
       senha: null,
-      pontos: null,
-      presenca: null,
       login: null,
       telefone: null
     };
