@@ -78,7 +78,7 @@
                         <label for="cpf">CPF:</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" placeholder="Cpf" name="cpf" id="cpf" class="form-control"
+                        <input type="text" placeholder="Cpf" name="cpf" id="cpf" class="form-control" mask="000.000.000-99"
                             [(ngModel)]="aluno.cpf" [ngModelOptions]="{standalone: true}"><br>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                         <label for="tel">Telefone:</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" placeholder="telefone" name="tel" id="tel" class="form-control"
+                        <input type="text" placeholder="telefone" name="tel" id="tel" class="form-control" mask="(00) 00000-0000"
                             [(ngModel)]="aluno.telefone" [ngModelOptions]="{standalone: true}"><br>
                     </div>
                 </div>

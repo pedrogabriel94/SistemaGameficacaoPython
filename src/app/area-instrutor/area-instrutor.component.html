@@ -36,7 +36,7 @@
                                         (click)="openModalEditar(i)">
                                         Editar
                                     </button>&nbsp;
-                                    <button class="btn btn-danger" data-toggle="modal">Deletar</button>
+                                    <button class="btn btn-danger" data-toggle="modal" data-target="#del">Deletar</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -73,7 +73,7 @@
                         <label for="cpf">CPF:</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" placeholder="Cpf" name="cpf" id="cpf" class="form-control"
+                        <input type="text" placeholder="Cpf" name="cpf" id="cpf" class="form-control" mask="000.000.000-99"
                             [(ngModel)]="instrutor.cpf" [ngModelOptions]="{standalone: true}"><br>
                     </div>
                 </div>
@@ -94,8 +94,9 @@
                         <label for="tel">Telefone:</label>
                     </div>
                     <div class="col-md-10">
-                        <input type="text" placeholder="telefone" name="tel" id="tel" class="form-control"
-                            [(ngModel)]="instrutor.telefone" [ngModelOptions]="{standalone: true}"><br>
+                        <input type="text" placeholder="telefone" name="tel"  id="tel" mask="(00) 00000-0000"
+                            class="form-control" [(ngModel)]="instrutor.telefone"
+                            [ngModelOptions]="{standalone: true}"><br>
                     </div>
                 </div>
                 <div class="row">

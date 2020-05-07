@@ -35,7 +35,19 @@ export class AreaAlunoComponent implements OnInit {
     this.titleModal = "Adicionar";
   }
 
+  formataCPF(cpf: String) {
+    var cpfFinal = cpf[0] + cpf[1] + cpf[2] + '.' + cpf[3] + cpf[4] + cpf[5] + '.' + cpf[6] + cpf[7] + cpf[8] + '-' + cpf[9] + cpf[10]
+    return cpfFinal
+  }
+  formataTelefone(tel: String) {
+    var telFinal = '(' + tel[0] + tel[1] + ')' + tel[2] + tel[3] + tel[4] + tel[5] + tel[6] + '-' + tel[7] + tel[8] + tel[8] + tel[10]
+    return telFinal
+  }
   adicionar() {
+    var cpfCerto = this.formataCPF(this.aluno.cpf)
+    this.aluno.cpf = cpfCerto
+    var telFormatado = this.formataTelefone(this.aluno.telefone)
+    this.aluno.telefone = telFormatado
     this.alunoService.adicionar(this.aluno);
   }
 

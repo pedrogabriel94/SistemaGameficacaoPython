@@ -13,12 +13,15 @@ import { MenuComponent } from './menu/menu.component';
 import { AuthService } from './login/auth.service';
 import { AuthGuardsService } from './guardas/auth.guards';
 import { InstrutorGuardsService } from './guardas/instrutor.guards';
-
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { environment } from '../environments/environment';
 
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +35,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NgxMaskModule.forRoot(maskConfig),
     NgxPaginationModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule
