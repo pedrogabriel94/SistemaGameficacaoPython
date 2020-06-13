@@ -14,15 +14,14 @@ export class AreaAlunoComponent implements OnInit {
   idDeletar: string;
   alunos = [];
   aluno: AlunoModel = new AlunoModel();
-  titleModal: string = "Adicionar";
+  titleModal = 'Adicionar';
+  paginaAtual = 1;
 
   constructor(private alunoService: AlunoService) { }
 
   ngOnInit(): void {
     this.getAll();
   }
-
-  paginaAtual = 1;
 
   abrirModal() {
     this.aluno = {
@@ -32,14 +31,14 @@ export class AreaAlunoComponent implements OnInit {
       login: null,
       telefone: null
     };
-    this.titleModal = "Adicionar";
+    this.titleModal = 'Adicionar';
   }
 
-  formataCPF(cpf: String) {
+  formataCPF(cpf: string) {
     var cpfFinal = cpf[0] + cpf[1] + cpf[2] + '.' + cpf[3] + cpf[4] + cpf[5] + '.' + cpf[6] + cpf[7] + cpf[8] + '-' + cpf[9] + cpf[10]
     return cpfFinal
   }
-  formataTelefone(tel: String) {
+  formataTelefone(tel: string) {
     var telFinal = '(' + tel[0] + tel[1] + ')' + tel[2] + tel[3] + tel[4] + tel[5] + tel[6] + '-' + tel[7] + tel[8] + tel[8] + tel[10]
     return telFinal
   }
@@ -58,13 +57,12 @@ export class AreaAlunoComponent implements OnInit {
           $key: e.payload.doc.id,
           ...e.payload.doc.data() as AlunoModel
         };
-
-      })
+      });
     });
   }
 
   openModalDeletar(id) {
-    this.idDeletar = id
+    this.idDeletar = id;
   }
 
   deletar(id) {
@@ -72,7 +70,7 @@ export class AreaAlunoComponent implements OnInit {
   }
 
   openModalEditar(i) {
-    this.titleModal = "Editar";
+    this.titleModal = 'Editar';
     this.aluno = Object.assign({}, i); //Faz uma copia do objeto
   }
 

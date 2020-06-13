@@ -14,22 +14,22 @@ export class MenuComponent implements OnInit {
     this.setOpcoes();
   }
 
-  sair(){
-    sessionStorage.setItem("logado", "false");
+  sair() {
+    sessionStorage.setItem('logado', 'false');
   }
 
-  setOpcoes(){
-    let tipo = sessionStorage.getItem("tipoLogado");
-    if(tipo == "aluno"){
+  setOpcoes() {
+    let tipo = sessionStorage.getItem('tipoLogado');
+    if ( tipo === 'aluno') {
       this.opcoes = [
-        {hash: "20200325", descricao: "Atividades"}
-      ]
-    }else{
+        {hash: '20200325', descricao: 'Atividades'}
+      ];
+    } else {
       this.opcoes = [
-        {hash: "20200314", descricao: "Instrutores"},
-        {hash: "20200316", descricao: "Alunos"},
-        {hash: "20200325", descricao: "Atividades"}
-      ]
+        {hash: '20200314', descricao: 'Instrutores'},
+        {hash: '20200316', descricao: 'Alunos'},
+        {hash: '20200325', descricao: 'Atividades'}
+      ];
     }
   }
 

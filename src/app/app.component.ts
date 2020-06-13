@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './login/auth.service';
 
 @Component({
@@ -6,16 +6,16 @@ import { AuthService } from './login/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'appGameficacao';
-  viewMenu: string = sessionStorage.getItem("logado");
+  viewMenu: string = sessionStorage.getItem('logado');
 
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.authService.viewMenu.subscribe(
-      x => this.viewMenu = sessionStorage.getItem("logado"),
+      x => this.viewMenu = sessionStorage.getItem('logado'),
       console.log(this.viewMenu)
     );
 
